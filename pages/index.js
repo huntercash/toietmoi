@@ -1,11 +1,33 @@
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import countdown from 'countdown';
 // The day we meet
-const date = new Date('2020-08-12T17:40:00Z');
+const dayWeMeet = new Date('2020-08-12T17:40:00Z');
 // The variable that looks nice
-const count = countdown(date);
 
 export default function Home() {
+  const [date, setDate] = useState({
+    days: null,
+    hours: null,
+    minutes: null,
+    seconds: null,
+  });
+
+  const refresh = async (count) => {
+    await setTimeout(() => {}, 1000);
+    setDate({
+      days: count.days,
+      hours: count.hours,
+      minutes: count.minutes,
+      seconds: count.seconds,
+    });
+  };
+
+  useEffect(() => {
+    const count = countdown(dayWeMeet);
+    refresh(count);
+  }, [date]);
+
   return (
     <div className='container'>
       <Head>
@@ -15,16 +37,16 @@ export default function Home() {
 
       <main>
         <div>
-          <h1>{`${count.days} Days`}</h1>
+          <h1>{`${date.days} Days`}</h1>
         </div>
         <div>
-          <h2>{`${count.hours} Hours`}</h2>
+          <h2>{`${date.hours + 5} Hours`}</h2>
         </div>
         <div>
-          <h3>{`${count.minutes} Minutes`}</h3>
+          <h3>{`${date.minutes} Minutes`}</h3>
         </div>
         <div>
-          <h4>{`${count.seconds} Seconds`}</h4>
+          <h4>{`${date.seconds} Seconds`}</h4>
         </div>
       </main>
 
