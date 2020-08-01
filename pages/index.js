@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import countdown from 'countdown';
 // The day we meet
-const dayWeMeet = new Date('2020-08-12T17:40:00Z');
+const dayWeMeet = new Date('2020-08-13T00:58:00Z');
 // The variable that looks nice
 
 export default function Home() {
@@ -40,7 +40,7 @@ export default function Home() {
           <h1>{`${date.days} Days`}</h1>
         </div>
         <div>
-          <h2>{`${date.hours + 5} Hours`}</h2>
+          <h2>{`${date.hours} Hours`}</h2>
         </div>
         <div>
           <h3>{`${date.minutes} Minutes`}</h3>
